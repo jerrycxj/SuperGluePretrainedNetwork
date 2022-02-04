@@ -41,36 +41,6 @@ There are two main top-level scripts in this repo:
 ## Live Matching Demo Script (`demo_superglue.py`)
 This demo runs SuperPoint + SuperGlue feature matching on an anchor image and live image. You can update the anchor image by pressing the `n` key. The demo can read image streams from a USB or IP camera, a directory containing images, or a video file. You can pass all of these inputs using the `--input` flag.
 
-### Run the demo on a live webcam
-
-Run the demo on the default USB webcam (ID #0), running on a CUDA GPU if one is found:
-
-```sh
-./demo_superglue.py
-```
-
-Keyboard control:
-
-* `n`: select the current frame as the anchor
-* `e`/`r`: increase/decrease the keypoint confidence threshold
-* `d`/`f`: increase/decrease the match filtering threshold
-* `k`: toggle the visualization of keypoints
-* `q`: quit
-
-Run the demo on 320x240 images running on the CPU:
-
-```sh
-./demo_superglue.py --resize 320 240 --force_cpu
-```
-
-The `--resize` flag can be used to resize the input image in three ways:
-
-1. `--resize` `width` `height` : will resize to exact `width` x `height` dimensions
-2. `--resize` `max_dimension` : will resize largest input image dimension to `max_dimension`
-3. `--resize` `-1` : will not resize (i.e. use original image dimensions)
-
-The default will resize images to `640x480`.
-
 ### Run the demo on a directory of images
 
 The `--input` flag also accepts a path to a directory. We provide a directory of sample images from a sequence. To run the demo on the directory of images in `freiburg_sequence/` on a headless server (will not display to the screen) and write the output visualization images to `dump_demo_sequence/`:
